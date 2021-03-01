@@ -41,7 +41,7 @@
 
 
 \title{Surrogate model constructed using neural networks for the forward and inverse problems}
-\author{Wenjuan Zhang}
+\author{Wenjuan (Tina) Zhang}
 \institute{University of Colorado Denver}
 %\titlegraphic{\includegraphics[width=0.06\textwidth]{melblogo.png}}
 
@@ -53,7 +53,7 @@
 \column{0.32}
 \block{Surrogate Model}{ 
 \textbf{Problem:}\\
-The mapping between input and output spaces is not achievable, but can be approximated.\\
+How to quantify the uncertainties when the mapping between the input and output spaces is not achievable, but can be approximated?\\
 
 \noindent \textbf{Goal:}\\
 Analyzes the convergence of probability densities solving uncertainty quantification problems using surrogate model.
@@ -88,16 +88,18 @@ The neural network is trained under different numbers of epochs, 1000, 2000, 500
 %In \cite{cite:5}, the main result was the description of canonically $z$-invariant 
 
 
-\textbf{\textcolor{blue}{Convergence of surrogate model}}
-\begin{tikzfigure}[L2 difference between true solution and surrogate model.]
+\textbf{\textcolor{blue}{Convergence of $L_2$ distance}}
+\begin{tikzfigure}[L2 difference by using surrogate model.]
 	\includegraphics[width=0.5\linewidth]{1.png}
 \end{tikzfigure}
 
 \vspace{0.5cm}
 \noindent \textit{Since our quantity of interest is uncertain due to the randomness from $\lambda$, to verify the convergence of push-forward densities using approximate maps, we create the error plot by using the $L^2$ distance on $[0.3,0.7]$ for a fixed $\lambda$ value 1.1.}\\
 
-\noindent \textbf{Conclusion:}\\
-Surrogate model converges in the $L^2$ sense.
+%\noindent \textbf{Conclusion:}\\
+%The surrogate model constructed above converges as more epochs are being used.
+%%Surrogate model converges in the $L^2$ sense.
+%
 }
 
 \column{0.36}
@@ -120,11 +122,11 @@ Surrogate model constructed using neural networks helps approximate true push-fo
 \end{center}
 \textbf{Using the exact model} \cite{2}:
 $$
-\pi_{\Lambda}^{u}(\lambda) = \pi_{\Lambda}^{i}(\lambda)\  \frac{\pi_{\mathcal{D}}(Q(\lambda))}{\pi_{\mathcal{D}}^{Q}(Q(\lambda))}
+\pi_{\Lambda}^{\text{up}}(\lambda) = \pi_{\Lambda}^{\text{init}}(\lambda)\  \frac{\pi_{\mathcal{D}}(Q(\lambda))}{\pi_{\mathcal{D}}^{Q}(Q(\lambda))}
 $$
 \textbf{Using the surrogate model} \cite{3}:
 $$
-\pi_{\Lambda}^{u,n}(\lambda) = \pi_{\Lambda}^{i}(\lambda)\  \frac{\pi_{\mathcal{D}}(Q_n(\lambda))}{\pi_{\mathcal{D}}^{Q_n}(Q_n(\lambda))}
+\pi_{\Lambda}^{\text{up},n}(\lambda) = \pi_{\Lambda}^{\text{init}}(\lambda)\  \frac{\pi_{\mathcal{D}}(Q_n(\lambda))}{\pi_{\mathcal{D}}^{Q_n}(Q_n(\lambda))}
 $$
 
 \textcolor{blue}{\textbf{Demonstration}}
@@ -158,9 +160,9 @@ Surrogate model constructed using neural networks helps approximate true updated
 	$\mathcal{D}$ & Observable Space \\
 	$Q$ & Exact model \\
 	$Q_n$ &$n$-th surrogate model \\
-	$\pi_{\Lambda}^{i}$ & Initial density guess of $\lambda$\\
-		$\pi_{\Lambda}^{u}$ & Update pullback density\\
-	$\pi_{\Lambda}^{u,n}$ & Approximate update pullback density using $Q_n$\\
+	$\pi_{\Lambda}^{\text{init}}$ & Initial density guess of $\lambda$\\
+	$\pi_{\Lambda}^{\text{up}}$ & Update pullback density\\
+	$\pi_{\Lambda}^{\text{up},n}$ & Approximate update pullback density using $Q_n$\\
 	$\pi_{\mathcal{D}}$ &Observed density \\
 	$\pi_{\mathcal{D}}^{Q}$ & Push-forward density\\
 	$\pi_{\mathcal{D}}^{Q_n}$ & Approximate push-forward density\\
